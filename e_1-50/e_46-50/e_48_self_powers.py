@@ -1,6 +1,2 @@
-def power(n):
-    return n**n
-
-n= 1000
-
-print(sum(power(n) for n in range(1,n+1)))
+n=1000
+print(str(sum(x**x for x in range(1,n+1)))[-10:])

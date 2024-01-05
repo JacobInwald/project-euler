@@ -13,7 +13,17 @@ hundred = 'hundred'
 thousand = 'thousand'
 
 
-def numtoword(n) -> str:
+def numtoword(n: int) -> str:
+    """
+    Converts a given number to its corresponding word representation.
+
+    Args:
+        n (int): The number to be converted.
+
+    Returns:
+        str: The word representation of the given number.
+    """
+
     # 0-9
     for k in unit_words.keys():
         if n == k:
@@ -51,8 +61,17 @@ def numtoword(n) -> str:
         
     return "error"
 
-def count_letters(s):
-    s=s.replace(' ', '')
+def count_letters(s: str) -> int:
+    """
+    Counts the number of letters in a given string, excluding spaces.
+
+    Args:
+        s (str): The input string.
+
+    Returns:
+        int: The number of letters in the string.
+    """
+    s = s.replace(' ', '')
     return len(s)
 
 print(sum([count_letters(numtoword(i)) for i in range(1, 1001)]))

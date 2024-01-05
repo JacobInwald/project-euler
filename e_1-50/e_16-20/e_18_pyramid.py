@@ -16,10 +16,32 @@ pyramid = [
         [4,62,98,27,23,9,70,98,73,93,38,53,60,4,23]
     ]
 
-def expand(layer, index):
+
+def expand(layer: int, index: int) -> list[tuple[int]]:
+    """
+    Expands the given layer and index to generate a list of tuples representing the next layer.
+
+    Args:
+        layer (int): The current layer.
+        index (int): The current index.
+
+    Returns:
+        list[tuple[int]]: A list of tuples representing the next layer.
+    """
     return [(layer+1, index), (layer+1, index+1)]
 
-def get_max_path(pyramid):
+
+def get_max_path(pyramid: list[list[int]]) -> int:
+    """
+    Calculates the maximum path sum in a pyramid of numbers.
+
+    Args:
+        pyramid (list[list[int]]): The pyramid of numbers.
+
+    Returns:
+        int: The maximum path sum.
+
+    """
     max_path = 0
     for i in range(2**len(pyramid)):
         path = 0

@@ -5,7 +5,17 @@ sys.path.insert(1, os.path.join(sys.path[0], '../../'))
 from utils import *
 from itertools import permutations
 
-def gen_perms(n):
+
+def gen_perms(n: int) -> list[int]:
+    """
+    Generate all permutations of the digits in a given number.
+
+    Args:
+        n (int): The number for which permutations need to be generated.
+
+    Returns:
+        list[int]: A list of integers representing all possible permutations of the digits in the given number.
+    """
     n = str(n)
     return [int(''.join(x)) for x in permutations(n, len(n))]
 

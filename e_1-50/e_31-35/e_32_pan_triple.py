@@ -1,14 +1,20 @@
-
-def isPan(n: int) -> bool:
-    n = str(n)
-    if len(n) != 9:
-        return False
-    for i in range(1, 10):
-        if str(i) not in n:
-            return False
-    return True
+import os
+import sys
+sys.path.insert(1, os.path.join(sys.path[0], '../../'))
+from utils import *
 
 def tripletIsPan(a: int, b: int, c: int) -> bool:
+    """
+    Check if the concatenation of three numbers forms a pandigital number.
+
+    Args:
+        a (int): The first number.
+        b (int): The second number.
+        c (int): The third number.
+
+    Returns:
+        bool: True if the concatenation is a pandigital number, False otherwise.
+    """
     return isPan(str(a) + str(b) + str(c))
 
 triplets = []

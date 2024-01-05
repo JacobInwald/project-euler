@@ -1,6 +1,16 @@
 from decimal import Decimal as d
 
-def find_recpr(n):
+def find_recpr(n: int) -> int:
+    """
+    Finds the length of the repeating reciprocal of a given number.
+
+    Parameters:
+    n (int): The number for which to find the repeating reciprocal length.
+
+    Returns:
+    int: The length of the repeating reciprocal.
+
+    """
     if (n & (n - 1)) == 0 or n % 5 == 0:
         return 0
     if n % 2 == 0:

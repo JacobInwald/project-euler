@@ -1,10 +1,8 @@
-import math as m
-
-def gen_pent(n):
-    return n*(3*n-1)//2
-
-def is_pent(n):
-    return (m.sqrt(24*n+1) + 1) /6 % 1 == 0
+# Import parent library
+import os
+import sys
+sys.path.insert(1, os.path.join(sys.path[0], '../../'))
+from utils import *
 
 sum = 0
 diff = 0

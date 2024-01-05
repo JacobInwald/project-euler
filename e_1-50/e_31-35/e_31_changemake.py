@@ -1,5 +1,15 @@
 
-def branch(n):
+def coin_sum(n: int) -> int:
+    """
+    Calculates the number of ways to make change for a given amount using a set of coins.
+    
+    Args:
+        n (int): The target amount for which change needs to be made.
+        
+    Returns:
+        int: The number of ways to make change for the given amount.
+    """
+
     coins = [1, 2, 5, 10, 20, 50, 100, 200]
     num_ways_for_amt = {k : [0 for i in coins] for k in range(0, n+1)}
 
@@ -15,4 +25,4 @@ def branch(n):
         num_ways_for_amt[k] = sum(num_ways_for_amt[k])
     return num_ways_for_amt
 
-print(branch(200))
+print(coin_sum(200))

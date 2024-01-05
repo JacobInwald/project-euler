@@ -1,23 +1,25 @@
-def divisible(n, primes):
-    for i in primes:
-        if n % i == 0:
-            return False
-    return True
+import os
+import sys
+sys.path.insert(1, os.path.join(sys.path[0], '../../'))
+from utils import *
 
-def prime_sieve(n):
-    """Returns a list of primes <= n."""
-    primes = [2]
-    for i in range(3, n+1):
-         if divisible(i, primes):
-                primes.append(i)
-    return primes
 
-def gen_prime_quad(a, b):
+def gen_prime_quad(a: int, b: int):
+    """
+    Generates a quadratic function of the form f(n) = n^2 + a*n + b.
+
+    Args:
+        a (int): The coefficient of the linear term.
+        b (int): The constant term.
+
+    Returns:
+        function: A quadratic function that takes an integer argument and returns the corresponding value.
+    """
     def f(n):
         return n**2 + a*n + b
     return f
 
-primes_under_1000 = prime_sieve(1000)
+primes_under_1000 = sieve_of_eratosthenese(1000)
 for a in range(-1000, 1001):
     for b in primes_under_1000:
         for sign in [-1, 1]:

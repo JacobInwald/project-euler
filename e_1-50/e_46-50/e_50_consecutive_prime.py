@@ -4,8 +4,6 @@ import sys
 sys.path.insert(1, os.path.join(sys.path[0], '../../'))
 from utils import *
 
-import math as m
-
 n = 1000000
 primes = sieve_of_eratosthenese(n)
 max_length = 0
