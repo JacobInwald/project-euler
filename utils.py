@@ -224,7 +224,7 @@ def prime_factorize(n: int, primes: list[int]=None) -> list[int]:
     """
 
     if not primes:
-        primes = sieve_of_eratosthenese(n)
+        primes = sieve_of_eratosthenese(int(m.sqrt(n)))
     
     for p in primes:
         if p > n:
