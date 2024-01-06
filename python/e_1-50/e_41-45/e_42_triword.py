@@ -37,7 +37,7 @@ def isTriWord(w: str) -> bool:
     return is_tri(sum)
 
 
-with open(os.path.join(os.path.dirname(__file__), '../../data/words.txt'), 'r') as f:
+with open(os.path.join(os.path.dirname(__file__), '../../../data/words.txt'), 'r') as f:
     words = f.readline().split(',')
 
 count = 0
