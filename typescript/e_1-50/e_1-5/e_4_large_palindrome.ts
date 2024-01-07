@@ -1,4 +1,4 @@
-import { utils } from "../utils"
+import { utils } from "../../utils"
 
 let max: number = 0
 

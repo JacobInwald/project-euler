@@ -1,4 +1,4 @@
-import { utils } from "../utils"
+import { utils } from "../../utils"
 
 let factors: number[] = utils.primes.prime_factorize(600851475143)
 let max: number = 0
