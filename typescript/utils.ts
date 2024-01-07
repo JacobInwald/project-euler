@@ -10,10 +10,10 @@ export namespace utils {
          * @returns A list of prime numbers up to the given number.
          */
         export function prime_sieve(n: number): number[] {
-            let numbers: boolean[] = [...Array(n-1).keys()].map((x) => false)
-            let primes: number[] = []
+            var numbers: boolean[] = [...Array(n-1).keys()].map((x) => false)
+            var primes: number[] = []
 
-            for (let i = 2; i <= n; i++) {
+            for (var i = 2; i <= n; i++) {
 
                 if (numbers[i-2])
                     continue
@@ -35,28 +35,47 @@ export namespace utils {
          * @returns An array of prime factors of the given number.
          */
         export function prime_factorize(n: number): number[] {
-            let p = 0
-            let factors: number[] = []
+            var factors: number[] = []
 
-            for (let i = 2; i <= n; i++){
-                if (i % 2 != 0) {
-                    for (let x = 3; x < Math.sqrt(p); x+=2) {
-                        if (i % x == 0) {
-                            p = -1
-                            break
-                        }
+            while (n % 2 == 0) {
+                n = n / 2
+                factors.push(2)
+            }
+
+            while (n % 3 == 0) {
+                n = n / 3
+                factors.push(3)
+            }
+
+            for (var i = 5; i <= n; i+=6){
+
+                if (is_prime(i)) {
+                    while (n % i == 0) {
+                        n = n / i
+                        factors.push(i)
                     }
                 }
 
-                if (!(p === -1)) {
-                    while (n % i === 0) {
-                        factors.push(i)
-                        n = n / i
+                if (is_prime(i+2)) {
+                    while (n % (i+2) == 0) {
+                        n = n / (i+2)
+                        factors.push(i+2)
                     }
                 }
             }
 
             return factors
+        }
+
+        export function is_prime(n: number): boolean {
+            if (n % 2 == 0 || n % 3 == 0)
+                return false
+            for (let x = 5; x < Math.sqrt(n); x+=6) {
+                if (n % (x) == 0 || n % (x+2) == 0 ) {
+                    return false
+                }
+            }
+            return true
         }
     }
 
@@ -70,7 +89,7 @@ export namespace utils {
          */
         export function is_palindrome(n: number): boolean {
 
-            let str_n: string = n.toString()
+            var str_n: string = n.toString()
             
             for (let i = 0; i < str_n.length / 2; i++)
                 if (str_n[i] !== str_n[str_n.length-1-i])
@@ -79,6 +98,19 @@ export namespace utils {
             return true
         }
 
+        /**
+         * Generates the nth triangular number.
+         * 
+         * @param n - The index of the triangular number to generate.
+         * @returns The nth triangular number.
+         */
+        export function gen_tri_num(n: number): number {
+            return ((n * (n+1)) / 2) >> 0
+        }
+
+        export function is_tri_num(n: number): boolean {
+            return ((Math.sqrt(8*n+1) - 1) / 2) % 1 == 0
+        }
     }
 }
 // import os

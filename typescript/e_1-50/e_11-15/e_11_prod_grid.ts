@@ -1,4 +1,4 @@
-grid = [
+var grid: number[][] = [
         [8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8],
         [49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,0],
         [81,49,31,73,55,79,14,29,93,71,40,67,53,88,30,3,49,13,36,65],
@@ -21,27 +21,30 @@ grid = [
         [1,70,54,71,83,51,54,69,16,92,33,48,61,43,52,1,89,19,67,48],
     ]
 
-max_prod = 1
-h = len(grid)
-w = len(grid[0])
+var max_prod: number = 1
+var temp_prods: number[] = [0, 0, 0, 0]
+var h: number = grid.length
+var w: number = grid[0].length
 
-for y in range(h):
-    for x in range(w):
-        # hor
-        if x+3 <= w-1:
-            hor_prod = grid[y][x] * grid[y][x+1] * grid[y][x+2] * grid[y][x+3]
-        # ver
-        if y+3 <= h-1:
-            ver_prod = grid[y][x] * grid[y+1][x] * grid[y+2][x] * grid[y+3][x]
-        # diag_left_doxn
-        if y+3 <= h-1 and x+3 <= w-1:
-            diag1_prod = grid[y][x] * grid[y+1][x+1] * grid[y+2][x+2] * grid[y+3][x+3]
-        # diag_right_doxn
-        if y+3 <= h-1 and x+3 >= 3:
-            diag2_prod = grid[y][x] * grid[y+1][x-1] * grid[y+2][x-2] * grid[y+3][x-3]
+for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x ++) {
+
+        // hor
+        if (x+3 <= w-1)
+            temp_prods[0] = grid[y][x] * grid[y][x+1] * grid[y][x+2] * grid[y][x+3]
+        // ver
+        if (y+3 <= h-1)
+            temp_prods[1] = grid[y][x] * grid[y+1][x] * grid[y+2][x] * grid[y+3][x]
+        // diag_left_doxn
+        if (y+3 <= h-1 && x+3 <= w-1)
+            temp_prods[2] = grid[y][x] * grid[y+1][x+1] * grid[y+2][x+2] * grid[y+3][x+3]
+        // diag_right_doxn
+        if (y+3 <= h-1 && x+3 >= 3)
+            temp_prods[3] = grid[y][x] * grid[y+1][x-1] * grid[y+2][x-2] * grid[y+3][x-3]
         
-        new_prod = max([hor_prod, ver_prod, diag1_prod, diag2_prod])
-        if new_prod > max_prod:
-            max_prod = new_prod
+        temp_prods.forEach((x) => max_prod = x > max_prod ? x:max_prod)
+        
+    }
+}
 
-print(max_prod)
+console.log(max_prod)
