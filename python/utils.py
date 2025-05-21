@@ -1,3 +1,4 @@
+from collections.abc import Generator
 import os
 import math as m
 
@@ -120,6 +121,16 @@ def is_hex(n: int) -> bool:
     """
     return ((m.sqrt(8*n+1) + 1) / 4) % 1 == 0
 
+
+def get_divs(n: int) -> Generator:
+    """ Returns the list of divisors of n, sans n"""
+    _n = m.sqrt(n)
+    for i in range(1, m.ceil(_n)+1):
+        _i = n / i 
+        if _i % 1 == 0:
+            yield int(_i)
+            if _i != i:
+                yield i
 
 # ! Prime Related Methods
 
